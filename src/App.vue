@@ -2,18 +2,20 @@
 export default {
   data() {
     return {
-      count: 1
+      count: 0
     }
   },
-  mounted() {
-    console.log(this.count)
-    this.count = 2
+  methods: {
+    increment() {
+      this.count++
+    }
   }
 }
 </script>
 
 <template>
-  Count is: {{ count }}
+  <!-- <button @click="increment">{{ count }}</button> -->
+  <v-btn @click="increment">{{ count }}</v-btn>
 </template>
 
 <!-- <script setup>
