@@ -2,7 +2,19 @@
 export default {
   data() {
     return {
-      count: 0
+      author: {
+        name: 'John Doe',
+        books: [
+          'Vue 2 - Advanced Guide',
+          'Vue 3 - Basic Guide',
+          'Vue 4 - The Mystery'
+        ]
+      }
+    }
+  },
+  computed: {
+    publishedBooksMessage() {
+      return this.author.books.length > 0 ? 'Yes' : 'No'
     }
   },
   methods: {
@@ -14,8 +26,9 @@ export default {
 </script>
 
 <template>
-  <!-- <button @click="increment">{{ count }}</button> -->
-  <v-btn @click="increment">{{ count }}</v-btn>
+  <!-- <v-btn @click="increment">{{ count }}</v-btn> -->
+  <p>Has published books:</p>
+  <span>{{ publishedBooksMessage }}</span>
 </template>
 
 <!-- <script setup>
