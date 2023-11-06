@@ -2,33 +2,17 @@
 export default {
   data() {
     return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  },
-  computed: {
-    publishedBooksMessage() {
-      return this.author.books.length > 0 ? 'Yes' : 'No'
-    }
-  },
-  methods: {
-    increment() {
-      this.count++
+      awesome: true
     }
   }
 }
 </script>
 
 <template>
-  <!-- <v-btn @click="increment">{{ count }}</v-btn> -->
-  <p>Has published books:</p>
-  <span>{{ publishedBooksMessage }}</span>
+  <v-btn @click="awesome = ! awesome">toggle</v-btn>
+  <p></p>
+  <h1 v-if="awesome">Vue is awesome!</h1>
+  <h1 v-else>Oh no!</h1>
 </template>
 
 <!-- <script setup>
