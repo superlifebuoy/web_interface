@@ -4,6 +4,9 @@ export default {
     return {
       awesome: true
     }
+  },
+  mounted() {
+    console.log(`the component is now mounted.`)
   }
 }
 </script>
