@@ -2,20 +2,37 @@
 export default {
   data() {
     return {
-      awesome: true
+      question: '',
+      answer: 'Questions usually contain a question mark. ;-)'
     }
   },
-  mounted() {
-    console.log(`the component is now mounted.`)
+  watch: {
+    question(newQuestion, oldQuestion) {
+      if (newQuestion.includes('?')) {
+        this.getAnswer()
+      }
+    }
+  },
+  methods: {
+    async getAnswer() {
+      this.answer = 'Thinking...'
+      try {
+        const res = await fetch('https://yesno.wtf/api')
+        this.answer = (await res.json()).answer
+      } catch (error) {
+        this.answer = 'Error! Could not reach the API. ' + error
+      }
+    }
   }
 }
 </script>
 
 <template>
-  <v-btn @click="awesome = ! awesome">toggle</v-btn>
-  <p></p>
-  <h1 v-if="awesome">Vue is awesome!</h1>
-  <h1 v-else>Oh no!</h1>
+  <p>
+    Ask a yes/no question:
+    <input v-model="question" />
+  </p>
+  <p>{{ answer }}</p>
 </template>
 
 <!-- <script setup>
