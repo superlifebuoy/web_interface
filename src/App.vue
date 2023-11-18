@@ -1,13 +1,26 @@
 <script>
 export default {
+  data() {
+    return {
+      list: [
+        "v1",
+        "v2",
+        "v3"
+      ]
+    }
+  },
   mounted() {
-    this.$refs.input.focus()
+    console.log(this.$refs.items)
   }
 }
 </script>
 
 <template>
-  <input ref="input">
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
 </template>
 
 <!-- <script setup>
